@@ -1,0 +1,65 @@
+
+  {%extends 'base.html' %}
+
+  {% block content %}
+
+  {% if state %}
+    {{state}}
+  {% endif %}  
+  
+  {% if api %}
+
+    {% if api == "Error..." %}
+        There was an error please try again
+    {% else %}  
+        <br/>
+        <br/>
+        <div class="card-deck">
+        <div class="container col-12">
+        <div class="card {{weather_info}}">
+        <div class="card-body">
+        <h1 class="card-title">Weather</h1>
+        <p class="card-text">
+        Weather:={{api.weather.0.main}}<br/>
+        Weather Description:={{api.weather.0.description}}<br/>
+        </p>
+        </div>
+        </div>
+        </div>
+        </div>
+        <br/>
+
+        <div class="card-deck ">
+        <div class="container col-12">
+        <div class="card {{weather_info}}">
+        <div class="card-body">
+        <h1 class="card-title">Temprature</h1>
+        <p class="card-text">Temprature:={{api.main.temp}}<br/>Humidity:={{api.main.humidity}}<br/>
+        Sealevel:={{api.main.sea_level}}<br/>
+        Groundlevel:={{api.main.grnd_level}}<br/></p>
+        </div>
+        </div>
+        </div>
+        </div>
+        <br/>
+
+        <div class="card-deck">
+            <div class="container col-12">
+            <div class="card {{weather_info}}">
+            <div class="card-body">
+            <h1 class="card-title">City</h1>
+            <p class="card-text"> Country:={{api.sys.country}}<br/> 
+            City:={{api.name}}<br/>
+            Feels Like:={{api.main.feels_like}}</p>
+            </div>
+        </div>
+        </div>
+        </div>
+            <br/>    
+    {% endif %}    
+  {% endif %}
+    
+    {% endblock %}   
+  
+
+  
